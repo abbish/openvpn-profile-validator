@@ -14,4 +14,12 @@ def single_verify_profile(file_path, username, password):
 
     logging.info(
         f"File: {file_path}, Accessible: {accessibility_output_str}")
-    return file_path, accessibility_output_str
+
+    result = {
+        'file_name': file_path,
+        'accessibility': accessibility,
+        'accessibility_str': accessibility_str,
+        'accessibility_output_str': accessibility_output_str,
+    }
+
+    return result

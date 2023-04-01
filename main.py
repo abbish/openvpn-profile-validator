@@ -3,8 +3,15 @@ from batch_verifier import batch_verify_profiles
 from single_verifier import single_verify_profile
 from prettytable import PrettyTable
 
+import colorama
+from colorama import Style
+
 import logging
 import sys
+
+from summery_table import print_summary_table
+
+colorama.init(autoreset=True)
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -30,9 +37,4 @@ if args.directory:
 else:
     results = single_verify_profile(args.file, args.username, args.password)
 
-# out result as pretty table
-table = PrettyTable()
-table.title = "OpenVPN Profile Accessibility Summary"
-table.field_names = ["Profile file", "Is it available in your network"]
-table.add_rows(results)
-print(table)
+print_summary_table(results)
