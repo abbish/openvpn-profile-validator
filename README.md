@@ -37,3 +37,5 @@ Results sample
 Explanation of the use of username and password:   
 Validator will not use your username and password to create an actual VPN connection. The availability of the service is determined by checking whether the 'VERIFY OK' flag appears in the log information, which proves that your network environment can communicate with the server normally.
 
+
+**Paired coding with GPT 4**
