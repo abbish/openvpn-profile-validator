@@ -39,3 +39,10 @@ Validator will not use your username and password to create an actual VPN connec
 
 
 **Paired coding with GPT 4**
+
+---------------------
+### TODO
+- [ ] Display the IP address and country of origin of IP address 
+- [ ] Display the server response time in the output result
+- [ ] Improve the parsing logic of profile files
+- [ ] Add an option to automatically delete unusable profile files in command line arguments
