@@ -1,6 +1,15 @@
 # openvpn-profile-validator
 Check whether a given OpenVPN profile can be used in the your network in batches
 
+Linux user install openvpn
+```shell
+sudo apt-get install openvpn
+```
+macOS user install openvpn
+```shell
+brew install openvpn
+```
+How to run
 ```shell
 usage: main.py [-h] (-d DIRECTORY | -f FILE) -u USERNAME -p PASSWORD
 
