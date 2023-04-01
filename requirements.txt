@@ -2,3 +2,5 @@ openvpn_status
 requests
 argparse
 colorama
+pexpect
+prettytable

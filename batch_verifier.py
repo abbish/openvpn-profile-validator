@@ -1,24 +1,40 @@
 import os
-import logging
-from colorama import Fore, Style
-from profile_parser import get_server_address_and_port_from_profile
-from ip_checker import is_ip_accessible
+from single_verifier import single_verify_profile
+import threading
 
 
-def batch_verify_profiles(profiles_dir, username, password):
+def do_task(task):
+    result = task()
+    return result
+
+
+def batch_verify_profiles(profiles_dir, username, password, num_threads):
+    tasks = []
+    threads = []
     results = []
-
     files = sorted(os.listdir(profiles_dir))
+
     for file in files:
         if file.endswith('.ovpn'):
             file_path = os.path.join(profiles_dir, file)
-            logging.info(f"Processing {file} ...")
-            server_address, server_port = get_server_address_and_port_from_profile(file_path)
-            accessibility = is_ip_accessible(server_address, server_port, file_path, username, password)
-            accessibility_str = "Yes" if accessibility else "No"
-            color = Fore.GREEN if accessibility else Fore.RED
-            logging.info(
-                f"File: {file}, Server Address: {server_address}, Port: {server_port}, Accessible: {color}{Style.BRIGHT}{accessibility_str}{Style.RESET_ALL}")
-            results.append((file, server_address, server_port, accessibility))
+            tasks.append(lambda profile_file=file_path: single_verify_profile(profile_file, username, password))
+
+    def thread_handler():
+        while True:
+            try:
+                task = tasks.pop(0)
+            except IndexError:
+                break
+
+            result = do_task(task)
+            results.append(result)
+
+    for i in range(num_threads):
+        thread = threading.Thread(target=thread_handler)
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
 
     return results

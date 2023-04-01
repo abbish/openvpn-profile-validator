@@ -1,6 +1,19 @@
 import argparse
 from batch_verifier import batch_verify_profiles
 from single_verifier import single_verify_profile
+from prettytable import PrettyTable
+
+import logging
+import sys
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+loggerHandler = logging.StreamHandler(sys.stdout)
+loggerHandler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+loggerHandler.setFormatter(formatter)
+logger.addHandler(loggerHandler)
 
 parser = argparse.ArgumentParser(description='OpenVPN Profile Validator')
 group = parser.add_mutually_exclusive_group(required=True)
@@ -8,11 +21,18 @@ group.add_argument('-d', '--directory', help='Directory containing OpenVPN profi
 group.add_argument('-f', '--file', help='Single OpenVPN profile file')
 parser.add_argument('-u', '--username', help='OpenVPN username', required=True)
 parser.add_argument('-p', '--password', help='OpenVPN password', required=True)
+parser.add_argument('-t', '--num_threads', help='Number of threads to use for parallel processing', type=int, default=5)
 
 args = parser.parse_args()
 
 if args.directory:
-    results = batch_verify_profiles(args.directory, args.username, args.password)
+    results = batch_verify_profiles(args.directory, args.username, args.password, args.num_threads)
 else:
-    result = single_verify_profile(args.file, args.username, args.password)
-    print(result)
+    results = single_verify_profile(args.file, args.username, args.password)
+
+# out result as pretty table
+table = PrettyTable()
+table.title = "OpenVPN Profile Accessibility Summary"
+table.field_names = ["Profile file", "Is it available in your network"]
+table.add_rows(results)
+print(table)
