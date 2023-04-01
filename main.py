@@ -1,10 +1,8 @@
 import argparse
 from batch_verifier import batch_verify_profiles
 from single_verifier import single_verify_profile
-from prettytable import PrettyTable
 
 import colorama
-from colorama import Style
 
 import logging
 import sys
