@@ -23,6 +23,9 @@ optional arguments:
   -u USERNAME, --username USERNAME              OpenVPN username
   -p PASSWORD, --password PASSWORD              OpenVPN password
   -t NUM_THREADS, --num_threads NUM_THREADS     Number of threads to use for parallel processing
+  --debug                                       Show debug message
+  -r, --remove                                  Automatically move invalid OpenVPN profile files to trash folder
+
 
 ```
 Sample run
@@ -45,4 +48,4 @@ Validator will not use your username and password to create an actual VPN connec
 - [ ] Display the IP address and country of origin of IP address 
 - [ ] Display the server response time in the output result
 - [ ] Improve the parsing logic of profile files
-- [ ] Add an option to automatically delete unusable profile files in command line arguments
+- [x] Add an option to automatically delete unusable profile files in command line arguments

@@ -1,8 +1,6 @@
 import logging
-from colorama import init, Fore, Style
+from colorama import Fore, Style
 from server_checker import is_profile_usable
-
-init()
 
 
 def single_verify_profile(file_path, username, password):
