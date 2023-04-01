@@ -7,14 +7,11 @@ usage: main.py [-h] (-d DIRECTORY | -f FILE) -u USERNAME -p PASSWORD
 OpenVPN Profile Validator
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -d DIRECTORY, --directory DIRECTORY
-                        Directory containing OpenVPN profile files
-  -f FILE, --file FILE  Single OpenVPN profile file
-  -u USERNAME, --username USERNAME
-                        OpenVPN username
-  -p PASSWORD, --password PASSWORD
-                        OpenVPN password
+  -h, --help                            show this help message and exit
+  -d DIRECTORY, --directory DIRECTORY   Directory containing OpenVPN profile files
+  -f FILE, --file FILE                  Single OpenVPN profile file
+  -u USERNAME, --username USERNAME      OpenVPN username
+  -p PASSWORD, --password PASSWORD      OpenVPN password
 
 ```
 
