@@ -8,7 +8,7 @@ from profile_parser import get_server_address_and_port_from_profile
 def is_profile_usable(profile_file_path, username, password):
     server_address, server_port = get_server_address_and_port_from_profile(profile_file_path)
 
-    logging.info(f"Checking accessibility for {server_address}:{server_port}...")
+    logging.info(f"Checking accessibility for {profile_file_path}...")
 
     try:
         with tempfile.NamedTemporaryFile('w', suffix='.auth') as auth_file:
