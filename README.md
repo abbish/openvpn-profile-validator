@@ -1,5 +1,6 @@
 # openvpn-profile-validator
-Check whether a given OpenVPN profile can be used in the your network in batches
+When you have a batch of OpenVPN profile files, but some of them may have connection issues, this program can help you verify them in bulk and quickly identify the available profile files.  
+It is usually used for quick verification of manual OpenVPN configuration files provided by Surfshark.
 
 Linux user install openvpn command
 ```shell
