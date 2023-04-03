@@ -32,8 +32,15 @@ Sample run
 ```shell
 # validate profiles from directory
 python3 main.py -d test_profiles -u OPENVPN_USERNAME -p OPENVPN_PASSWORD -t 10
-
 ```
+
+Quick run
+```shell
+# put your OpenVPN profiles to test_profiles folder
+openvpn-profile-validator > ./quick_run.sh
+```
+
+
 Results sample  
 ![img.png](results_sample.png)
 
